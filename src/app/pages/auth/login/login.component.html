@@ -1,0 +1,83 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+      <div class="login-wrap position-relative bg-white rounded shadow-sm p-4 p-md-5">
+        <div class="icon d-flex align-items-center justify-content-center bg-light rounded-circle">
+          <span class="fa fa-user-o text-primary"></span>
+        </div>
+        <h3 class="text-center mb-4">Log in</h3>
+        <form
+          action="#"
+          class="login-form"
+          [formGroup]="loginForm"
+          (ngSubmit)="onSubmit()"
+        >
+          <div class="mb-3">
+            <input
+              type="text"
+              id="email"
+              class="form-control rounded-left"
+              placeholder="Username"
+              formControlName="email"
+              autofocus
+              [class]="{ 'is-invalid': submitted && form['email'].errors }"
+            />
+            <div
+              *ngIf="submitted && form['email'].errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="form['email'].errors?.['required']">Username is required</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <input
+              type="password"
+              id="password"
+              class="form-control rounded-left"
+              placeholder="Password"
+              formControlName="password"
+              [class]="{ 'is-invalid': submitted && form['password'].errors }"
+            />
+            <div
+              *ngIf="submitted && form['password'].errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="form['password'].errors?.['required']">
+                Password is required
+              </div>
+            </div>
+          </div>
+          <div class="text-center small">
+            <a href="javascript:void(0)">Forgot Password</a>
+          </div>
+          <div class="mb-3">
+            <button
+              type="submit"
+              class="
+                btn btn-primary
+                rounded
+                submit
+                py-3
+                px-5
+                position-absolute
+                top-100
+                start-50
+                translate-middle
+              "
+              [disabled]="loading"
+            >
+              <span
+                *ngIf="loading"
+                class="spinner-border spinner-border-sm mr-1"
+              ></span>
+              Login
+            </button>
+            <div *ngIf="error" class="alert alert-danger mt-3 mb-0">
+              {{ error }}
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,1 +1,118 @@
 /* You can add global styles to this file, and also import other style files */
+
+$font-primary: "Lato", Arial, sans-serif;
+$primary: #6b448d;
+$primary-hover: #5e3c7c;
+$white: #fff;
+$black: #000;
+
+body {
+  font-family: $font-primary;
+  font-size: 16px;
+  line-height: 1.8;
+  font-weight: normal;
+  background: #f8f9fd;
+  color: lighten($black, 50%);
+}
+a {
+  transition: 0.3s all ease;
+  color: $primary;
+  &:hover,
+  &:focus {
+    text-decoration: none !important;
+    color: $primary-hover !important;
+  }
+  &:focus {
+    background-color: lighten($primary, 50%) !important;
+  }
+}
+.bg-primary {
+  background: $primary !important;
+}
+.text-primary {
+  color: $primary !important;
+}
+
+.login-wrap {
+  h3 {
+    font-weight: 700;
+    font-size: 20px;
+    color: $primary;
+  }
+  .icon {
+    width: 80px;
+    height: 80px;
+    font-size: 30px;
+    margin: 0 auto 10px;
+  }
+}
+
+/* FORM CONTROL */
+.form-control,
+.form-select {
+  height: 48px;
+  background-color: rgba(0, 0, 0, 0.04);
+  color: $black;
+  font-size: 16px;
+  box-shadow: none;
+  border: 1px solid transparent;
+  padding-left: 20px;
+  padding-right: 20px;
+  &::-webkit-input-placeholder {
+    color: rgba(0, 0, 0, 0.3) !important;
+  }
+  &::-moz-placeholder {
+    color: rgba(0, 0, 0, 0.3) !important;
+  }
+  &:-ms-input-placeholder {
+    color: rgba(0, 0, 0, 0.3) !important;
+  }
+  &:-moz-placeholder {
+    color: rgba(0, 0, 0, 0.3) !important;
+  }
+  &:focus,
+  &:active {
+    outline: none !important;
+    box-shadow: none;
+    background-color: rgba(0, 0, 0, 0.07);
+    border-color: transparent;
+  }
+}
+
+/* overwrite btn */
+.btn {
+  box-shadow: none !important;
+  font-size: 15px;
+  &:hover,
+  &:active,
+  &:focus {
+    outline: none;
+  }
+  &.btn-primary {
+    background: $primary;
+    border: 1px solid $primary;
+    &:hover {
+      border: 1px solid $primary-hover;
+      background: $primary-hover;
+    }
+  }
+  &.btn-outline-primary {
+    border: 1px solid $primary;
+    background: transparent;
+    color: $primary;
+    &:hover {
+      border: 1px solid transparent;
+      background: $primary;
+      color: $white;
+    }
+  }
+}
+
+.alert-position {
+  bottom: 20px;
+  z-index: 9999;
+  right: 20px;
+  .alert {
+    width: fit-content;
+  }
+}

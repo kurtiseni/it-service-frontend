@@ -1,0 +1,102 @@
+<nav
+  class="
+    navbar navbar-expand-lg
+    fixed-top
+    navbar-light
+    bg-white
+    border-bottom
+  "
+>
+  <div class="container">
+    <!-- <a class="navbar-brand" routerLink="#">Navbar</a> -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-uppercase">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            aria-current="page"
+            routerLink="/"
+            [routerLinkActive]="'active'"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Home</a
+          >
+        </li>
+        <li
+          *ngFor="let menu of headerMenu"
+          class="nav-item"
+          [class]="menu.children ? 'dropdown' : ''"
+        >
+          <ng-container
+            *ngTemplateOutlet="
+              menu.children ? dropDownMenu : productListOnly;
+              context: menu
+            "
+          ></ng-container>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav text-capitalcase">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="javascript:void(0)"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            {{ user.username }}
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end border-0 shadow-sm">
+            <li>
+              <a
+                class="dropdown-item"
+                href="javascript:void(0)"
+                (click)="logout()"
+                >Logout</a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<ng-template #dropDownMenu let-subMenu="children" let-title="title">
+  <a
+    class="nav-link dropdown-toggle"
+    href="javascript:void(0)"
+    role="button"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+  >
+    {{ title }}
+  </a>
+  <ul class="dropdown-menu dropdown-menu-end border-0 shadow-sm">
+    <li *ngFor="let menu of subMenu">
+      <a
+        class="dropdown-item text-secondary"
+        [routerLink]="menu.url"
+        [routerLinkActive]="'text-dark'"
+        >{{ menu.title }}</a
+      >
+    </li>
+  </ul>
+</ng-template>
+
+<ng-template #productListOnly let-title="title" let-url="url">
+  <a class="nav-link" [routerLink]="url" [routerLinkActive]="'active'">
+    {{ title }}
+  </a>
+</ng-template>

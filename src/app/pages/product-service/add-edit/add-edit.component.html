@@ -1,0 +1,138 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <form class="row g-3" [formGroup]="addServiceForm" (submit)="submit()">
+        <div class="col-12">
+          <label for="inputAddress" class="form-label visually-hidden"
+            >Product code</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputAddress"
+            placeholder="Product code"
+            formControlName="productKey"
+            [ngClass]="{ 'is-invalid': submitted && productKey.errors }"
+          />
+          <div *ngIf="submitted && productKey.errors" class="invalid-feedback">
+            <div *ngIf="productKey.errors['required']">
+              Product Code is required
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="row align-items-end">
+            <div class="col-md-6">
+              <label for="inputEmail4" class="form-label">Expiry Date</label>
+              <input
+                type="date"
+                class="form-control"
+                id="inputEmail4"
+                placeholder="Expiry Date"
+                formControlName="expirayDate"
+                [ngClass]="{ 'is-invalid': submitted && expirayDate.errors }"
+              />
+              <div
+                *ngIf="submitted && expirayDate.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="expirayDate.errors['required']">
+                  Expiry Date is required
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="inputPassword4" class="form-label visually-hidden"
+                >Service Cost</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                id="inputPassword4"
+                placeholder="Service Cost"
+                formControlName="serviceCost"
+                [ngClass]="{ 'is-invalid': submitted && serviceCost.errors }"
+              />
+              <div
+                *ngIf="submitted && serviceCost.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="serviceCost.errors['required']">
+                  Service Cost is required
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div
+            class="form-check d-flex justify-content-center align-items-center"
+            [ngClass]="{ 'is-invalid': submitted && repairStatus.errors }"
+          >
+            <input
+              class="form-check-input"
+              type="radio"
+              name="repairStatus"
+              id="flexRadioDefault1"
+              formControlName="repairStatus"
+              [value]="true"
+            />
+            <label class="form-check-label ms-2" for="flexRadioDefault1">
+              Hey
+            </label>
+          </div>
+          <div
+            class="form-check d-flex justify-content-center align-items-center"
+          >
+            <input
+              class="form-check-input"
+              type="radio"
+              name="repairStatus"
+              id="flexRadioDefault2"
+              formControlName="repairStatus"
+              [value]="false"
+            />
+            <label class="form-check-label ms-2" for="flexRadioDefault2">
+              Dewey
+            </label>
+          </div>
+          <div
+            *ngIf="submitted && repairStatus.errors"
+            class="invalid-feedback text-center"
+          >
+            <div *ngIf="repairStatus.errors['required']">Status is required</div>
+          </div>
+        </div>
+        <div class="col-12">
+          <label
+            for="exampleFormControlTextarea1"
+            class="form-label visually-hidden"
+            >Case Description</label
+          >
+          <textarea
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="4"
+            placeholder="Case Description"
+            style="height: auto"
+            name="description"
+            formControlName="description"
+            [ngClass]="{ 'is-invalid': submitted && description.errors }"
+          ></textarea>
+          <div *ngIf="submitted && description.errors" class="invalid-feedback">
+            <div *ngIf="description.errors['required']">
+              Description is required
+            </div>
+          </div>
+        </div>
+        <div class="col-12 text-center">
+          <button
+            type="submit"
+            class="btn btn-primary text-uppercase"
+          >
+            Close Service
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
