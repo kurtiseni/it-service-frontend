@@ -1,3 +1,178 @@
 <div class="container">
-  <p>add-edit-product works!</p>
+  <form class="row g-3" [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div class="col-md-6">
+      <input type="text" class="form-control" formControlName="customerName" placeholder="First Name" autofocus
+             [class]="{ 'is-invalid': submitted && form['customerName'].errors }">
+      <!--error description [if]-->
+      <div *ngIf="submitted && form['customerName'].errors" class="invalid-feedback">
+        <div *ngIf="form['customerName'].errors?.['required']">Customer Name is required</div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <input type="text" class="form-control" formControlName="customerSurname" placeholder="Last Name"
+             [class]="{ 'is-invalid': submitted && form['customerSurname'].errors }">
+      <!--error description [if]-->
+      <div *ngIf="submitted && form['customerSurname'].errors" class="invalid-feedback">
+        <div *ngIf="form['customerSurname'].errors?.['required']">Last Name is required</div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <input type="email" class="form-control" formControlName="email" placeholder="Email"
+             [class]="{ 'is-invalid': submitted && form['email'].errors }">
+      <!--error description [if]-->
+      <div *ngIf="submitted && form['email'].errors" class="invalid-feedback">
+        <div *ngIf="form['email'].errors?.['required']">Email is required</div>
+        <div *ngIf="form['email'].errors?.['email']">Invalid Email address</div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <input type="tel" class="form-control" formControlName="phoneNumber" placeholder="Phone Number"
+             [class]="{ 'is-invalid': submitted && form['phoneNumber'].errors }">
+      <!--error description [if]-->
+      <div *ngIf="submitted && form['phoneNumber'].errors" class="invalid-feedback">
+        <div *ngIf="form['phoneNumber'].errors?.['required']">Phone Number is required</div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <input type="text" class="form-control" formControlName="fullAddress" placeholder="Full Address"
+             [class]="{ 'is-invalid': submitted && form['fullAddress'].errors }">
+      <!--error description [if]-->
+      <div *ngIf="submitted && form['fullAddress'].errors" class="invalid-feedback">
+        <div *ngIf="form['fullAddress'].errors?.['required']">Full Address is required</div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <input type="text" class="form-control" formControlName="fiscalCode" placeholder="Fiscal Code"
+             [class]="{ 'is-invalid': submitted && form['fiscalCode'].errors }">
+      <!--error description [if]-->
+      <div *ngIf="submitted && form['fiscalCode'].errors" class="invalid-feedback">
+        <div *ngIf="form['fiscalCode'].errors?.['required']">Fiscal Code is required</div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <input type="text" class="form-control" formControlName="vatNumber" placeholder="VAT Number"
+             [class]="{ 'is-invalid': submitted && form['vatNumber'].errors }">
+      <!--error description [if]-->
+      <div *ngIf="submitted && form['vatNumber'].errors" class="invalid-feedback">
+        <div *ngIf="form['vatNumber'].errors?.['required']">Vat Number is required</div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <input type="text" class="form-control" formControlName="pec" placeholder="pec"
+             [class]="{ 'is-invalid': submitted && form['pec'].errors }">
+      <!--error description [if]-->
+      <div *ngIf="submitted && form['pec'].errors" class="invalid-feedback">
+        <div *ngIf="form['pec'].errors?.['required']">pec is required</div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <input type="text" class="form-control" formControlName="sdiCode" placeholder="SDI Code"
+             [class]="{ 'is-invalid': submitted && form['sdiCode'].errors }">
+      <!--error description [if]-->
+      <div *ngIf="submitted && form['sdiCode'].errors" class="invalid-feedback">
+        <div *ngIf="form['sdiCode'].errors?.['required']">SDI Code is required</div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <input type="text" class="form-control" formControlName="password" placeholder="Password"
+             [class]="{ 'is-invalid': submitted && form['password'].errors }">
+      <!--error description [if]-->
+      <div *ngIf="submitted && form['password'].errors" class="invalid-feedback">
+        <div *ngIf="form['password'].errors?.['required']">Phone Password/PIN is required</div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <input type="text" class="form-control" formControlName="serialDevice" placeholder="Serial Device"
+             [class]="{ 'is-invalid': submitted && form['serialDevice'].errors }">
+      <!--error description [if]-->
+      <div *ngIf="submitted && form['serialDevice'].errors" class="invalid-feedback">
+        <div *ngIf="form['serialDevice'].errors?.['required']">Serial Device is required</div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <input type="text" class="form-control" formControlName="brand" placeholder="Brand"
+             [class]="{ 'is-invalid': submitted && form['brand'].errors }">
+      <!--error description [if]-->
+      <div *ngIf="submitted && form['brand'].errors" class="invalid-feedback">
+        <div *ngIf="form['brand'].errors?.['required']">Brand is required</div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <input type="text" class="form-control" formControlName="template" placeholder="Template"
+             [class]="{ 'is-invalid': submitted && form['template'].errors }">
+      <!--error description [if]-->
+      <div *ngIf="submitted && form['template'].errors" class="invalid-feedback">
+        <div *ngIf="form['template'].errors?.['required']">Template is required</div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <input type="text" class="form-control" formControlName="additionalNotes" placeholder="Additional Notes"
+             [class]="{ 'is-invalid': submitted && form['additionalNotes'].errors }">
+      <!--error description [if]-->
+      <div *ngIf="submitted && form['additionalNotes'].errors" class="invalid-feedback">
+        <div *ngIf="form['additionalNotes'].errors?.['required']">Additional Notes is required</div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <input
+        type="date"
+        class="form-control"
+        id="purchaseDate"
+        placeholder="Purchase Date"
+        formControlName="purchaseDate"
+        [class]="{ 'is-invalid': submitted && form['purchaseDate'].errors }"
+      />
+      <label for="purchaseDate" class="form-label small text-secondary fst-italic">Purchase Date</label>
+      <!--error description [if]-->
+      <div *ngIf="submitted && form['purchaseDate'].errors" class="invalid-feedback w-auto float-end">
+        <div *ngIf="form['purchaseDate'].errors?.['required']"> is required</div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <input
+        type="date"
+        class="form-control"
+        id="warrantyExpiryDate"
+        placeholder="Expiry Date"
+        formControlName="warrantyExpiryDate"
+        [class]="{ 'is-invalid': submitted && form['warrantyExpiryDate'].errors }"
+      />
+      <label for="warrantyExpiryDate" class="form-label small text-secondary fst-italic">Warranty Expiry Date</label>
+      <!--error description [if]-->
+      <div *ngIf="submitted && form['warrantyExpiryDate'].errors" class="invalid-feedback w-auto float-end">
+        <div *ngIf="form['warrantyExpiryDate'].errors?.['required']"> is required</div>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <textarea
+        class="form-control h-auto"
+        id="description"
+        rows="4"
+        placeholder="Description of the problem"
+        name="description"
+        formControlName="description"
+        [class]="{ 'is-invalid': submitted && form['description'].errors }"
+      ></textarea>
+      <!--error description [if]-->
+      <div *ngIf="submitted && form['description'].errors" class="invalid-feedback">
+        <div *ngIf="form['description'].errors?.['required']">Description is required</div>
+      </div>
+    </div>
+
+    <div class="col-12 text-center">
+      <button type="submit" class="btn btn-primary text-uppercase">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+        Submit product
+      </button>
+    </div>
+  </form>
 </div>
