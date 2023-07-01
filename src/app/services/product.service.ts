@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ProductModel, ProductResults } from '../pages/product/product.model';
+import { ProductDetail, ProductResults } from '../pages/product/product.model';
 import { ApiService } from './api.service';
 
 @Injectable({
@@ -16,7 +16,19 @@ export class ProductService extends ApiService {
     return this.get('/products');
   }
 
-  addProduct(body: ProductModel): Observable<ProductModel> {
+  getProduct(id: number): Observable<ProductDetail> {
+    return this.get(`/products/${id}`);
+  }
+
+  addProduct(body: ProductDetail): Observable<ProductDetail> {
     return this.post('/products', body);
+  }
+
+  updateProduct(id: number, body: ProductDetail): Observable<ProductDetail> {
+    return this.put(`/products/${id}`, body);
+  }
+
+  deleteProduct(id: number): Observable<unknown> {
+    return this.delete(`/products/${id}`)
   }
 }

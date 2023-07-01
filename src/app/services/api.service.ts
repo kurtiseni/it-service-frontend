@@ -21,10 +21,10 @@ export class ApiService {
   }
 
   put(endpoint: string, body: any, reqOpts?: any): Observable<any> {
-    return this.http.put(endpoint, body, reqOpts);
+    return this.http.put(`${this.url}${endpoint}`, body, reqOpts);
   }
 
   delete(endpoint: string, reqOpts?: any): Observable<any> {
-    return this.http.delete(endpoint, reqOpts);
+    return this.http.delete(`${this.url}${endpoint}`, reqOpts);
   }
 }

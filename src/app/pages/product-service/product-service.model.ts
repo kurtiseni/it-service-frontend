@@ -1,4 +1,4 @@
-import { ProductModel } from '../product/product.model';
+import { ProductDetail } from '../product/product.model';
 
 export interface ProductServiceResults {
   data: ProductServiceModel[];
@@ -6,7 +6,7 @@ export interface ProductServiceResults {
 }
 
 export class ProductServiceModel {
-  product!: ProductModel;
+  product!: ProductDetail;
   expirayDate!: Date;
   serviceCost!: string;
   repairStatus!: string;

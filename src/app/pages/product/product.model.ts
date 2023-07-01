@@ -1,9 +1,9 @@
 export interface ProductResults {
-  data: ProductModel[];
+  data: ProductList[];
   total: number;
 }
 
-export class ProductModel {
+export class ProductDetail {
   key!: string;
   serialDevice!: string;
   brand!: string;
@@ -22,4 +22,13 @@ export class ProductModel {
   vatNumber!: string;
   pec!: string;
   sdiCode!: string;
+}
+
+export interface ProductList {
+  brand: string;
+  description: string;
+  id: number;
+  key: string;
+  purchaseDate: Date;
+  serialDevice: string;
 }
