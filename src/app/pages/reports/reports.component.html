@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12 table-responsive mb-4">
+    <div class="col-md-12 mb-4">
       <form class="row gx-3 gy-2 align-items-center">
         <div class="col-sm-3">
           <label class="visually-hidden" for="startDate">Start Date</label>
@@ -63,8 +63,9 @@
       </form>
     </div>
     <div class="col-md-12">
-      <table class="table table-hover bg-white shadow-sm">
-        <thead class="text-uppercase small">
+      <div class="table-responsive bg-white shadow-sm mb-4">
+        <table class="table table-hover border-0-last-tr">
+          <thead class="text-uppercase small">
           <tr>
             <th scope="col" class="text-secondary text-opacity-50 border-0">Date</th>
             <th scope="col" class="text-secondary text-opacity-50 border-0">Order ID</th>
@@ -72,16 +73,14 @@
             <th scope="col" class="text-secondary text-opacity-50 border-0">Service Cost</th>
             <th scope="col" class="text-secondary text-opacity-50 border-0">Technic</th>
           </tr>
-        </thead>
-        <tbody>
+          </thead>
+          <tbody>
           <tr *ngFor="let report of reportData$">
             <td class="text-secondary">{{ report.date | date }}</td>
             <td>{{ report.orderID }}</td>
             <td>{{ report.brand }}</td>
             <td>
-              <span
-                [class]="report.repairStatus ? 'text-success' : 'text-danger'"
-              >
+              <span [class]="report.repairStatus ? 'text-success' : 'text-danger'">
                 &dollar;{{ report.price }}
               </span>
             </td>
@@ -93,16 +92,14 @@
             <td></td>
             <td>
               <h6>
-                <span class="badge bg-secondary"
-                  >TOTAL: &dollar;{{ totalAmount }}</span
-                >
+                <span class="badge bg-secondary">TOTAL: &dollar;{{ totalAmount }}</span>
               </h6>
             </td>
-            <td></td>
+            <td class="border-0"></td>
           </tr>
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <div class="col-md-12 text-center"></div>
   </div>
 </div>

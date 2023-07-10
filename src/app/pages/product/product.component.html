@@ -1,42 +1,46 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12 table-responsive">
-      <table class="table table-hover bg-white shadow-sm">
-        <thead class="text-uppercase small">
-          <tr>
-            <th scope="col" class="text-secondary text-opacity-50 border-0">Purchase Date</th>
-            <th scope="col" class="text-secondary text-opacity-50 border-0">Product Key</th>
-            <th scope="col" class="text-secondary text-opacity-50 border-0">Brand</th>
-            <th scope="col" class="text-secondary text-opacity-50 border-0">Serial Device</th>
-            <th scope="col" class="text-secondary text-opacity-50 border-0"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let product of productList$">
-            <td class="text-secondary">{{ product.purchaseDate | date }}</td>
-            <td>{{ product.key }}</td>
-            <td>{{ product.brand }}</td>
-            <td>{{ product.serialDevice }}</td>
-            <td>
-              <a routerLink="edit/{{product.id}}" class="btn btn-sm btn-light">
-                <i class="fa-solid fa-pen-to-square"></i>
-              </a>
-              <button (click)="deleteProduct(product.id)" class="btn btn-sm btn-light ms-2">
-                <i class="fa-regular fa-trash-can"></i>
-              </button>
-            </td>
-          </tr>
-          <tr *ngIf="!productList$">
-            <td colspan="5">
-              <div class="text-center py-4">
-                <div class="spinner-border text-primary" role="status">
-                  <span class="visually-hidden">Loading...</span>
+    <div class="col-md-12">
+      <div class="table-responsive bg-white shadow-sm mb-4">
+        <table class="table table-hover border-0-last-tr">
+          <thead class="text-uppercase small">
+            <tr>
+              <th scope="col" class="text-secondary text-opacity-50 border-0">Purchase Date</th>
+              <th scope="col" class="text-secondary text-opacity-50 border-0">Product Key</th>
+              <th scope="col" class="text-secondary text-opacity-50 border-0">Brand</th>
+              <th scope="col" class="text-secondary text-opacity-50 border-0">Serial Device</th>
+              <th scope="col" class="text-secondary text-opacity-50 border-0"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of productList$">
+              <td class="text-secondary">{{ product.purchaseDate | date }}</td>
+              <td>{{ product.key }}</td>
+              <td>{{ product.brand }}</td>
+              <td>{{ product.serialDevice }}</td>
+              <td>
+                <div class="d-flex">
+                  <a routerLink="edit/{{product.id}}" class="btn btn-sm btn-light">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </a>
+                  <button (click)="deleteProduct(product.id)" class="btn btn-sm btn-light ms-2">
+                    <i class="fa-regular fa-trash-can"></i>
+                  </button>
                 </div>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+              </td>
+            </tr>
+            <tr *ngIf="!productList$">
+              <td colspan="5">
+                <div class="text-center py-4">
+                  <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

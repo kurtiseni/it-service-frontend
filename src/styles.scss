@@ -118,3 +118,6 @@ a {
     width: fit-content;
   }
 }
+.border-0-last-tr tr:last-of-type td {
+  border: 0;
+}

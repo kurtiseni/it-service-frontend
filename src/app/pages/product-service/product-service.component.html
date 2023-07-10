@@ -1,45 +1,45 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12 table-responsive">
-      <table class="table table-hover bg-white shadow-sm">
-        <thead class="text-uppercase small">
-          <tr>
-            <th scope="col" class="text-secondary text-opacity-50 border-0">Expiry Date</th>
-            <th scope="col" class="text-secondary text-opacity-50 border-0">Product Key</th>
-            <th scope="col" class="text-secondary text-opacity-50 border-0">Description</th>
-            <th scope="col" class="text-secondary text-opacity-50 border-0">Cost</th>
-            <th scope="col" class="text-secondary text-opacity-50 border-0">Repair status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let service of serviceList$">
-            <td class="text-secondary">
-              {{ service.expirayDate | date }}
-            </td>
-            <td>{{ service.product.key }}</td>
-            <td>{{ service.description }}</td>
-            <th>
-              <span
-                [class]="service.repairStatus ? 'text-success' : 'text-danger'"
-              >
-                &dollar;{{ service.serviceCost }}
-              </span>
-            </th>
-            <td>
-              <span
-                ><i
-                  class="text-opacity-75 fa-lg fa-regular"
-                  [class]="
-                    service.repairStatus
-                      ? 'fa-check-circle text-success'
-                      : 'fa-times-circle text-danger'
-                  "
-                ></i
-              ></span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="col-md-12">
+      <div class="table-responsive bg-white shadow-sm mb-4">
+        <table class="table table-hover border-0-last-tr">
+          <thead class="text-uppercase small">
+            <tr>
+              <th scope="col" class="text-secondary text-opacity-50 border-0">Expiry Date</th>
+              <th scope="col" class="text-secondary text-opacity-50 border-0">Product Key</th>
+              <th scope="col" class="text-secondary text-opacity-50 border-0">Description</th>
+              <th scope="col" class="text-secondary text-opacity-50 border-0">Cost</th>
+              <th scope="col" class="text-secondary text-opacity-50 border-0">Repair status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let service of serviceList$">
+              <td class="text-secondary">
+                {{ service.expirayDate | date }}
+              </td>
+              <td>{{ service.product.key }}</td>
+              <td>{{ service.description }}</td>
+              <td>
+                <span [class]="service.repairStatus ? 'text-success' : 'text-danger'">
+                  &dollar;{{ service.serviceCost }}
+                </span>
+              </td>
+              <td>
+                <span>
+                  <i
+                    class="text-opacity-75 fa-lg fa-regular"
+                    [class]="
+                      service.repairStatus
+                        ? 'fa-check-circle text-success'
+                        : 'fa-times-circle text-danger'
+                    ">
+                  </i>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
