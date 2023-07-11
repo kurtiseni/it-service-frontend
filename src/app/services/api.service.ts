@@ -24,6 +24,10 @@ export class ApiService {
     return this.http.put(`${this.url}${endpoint}`, body, reqOpts);
   }
 
+  patch(endpoint: string, body: any, reqOpts?: any): Observable<any> {
+    return this.http.patch(`${this.url}${endpoint}`, body, reqOpts);
+  }
+
   delete(endpoint: string, reqOpts?: any): Observable<any> {
     return this.http.delete(`${this.url}${endpoint}`, reqOpts);
   }

@@ -24,8 +24,8 @@ export class ProductService extends ApiService {
     return this.post('/products', body);
   }
 
-  updateProduct(id: number, body: ProductDetail): Observable<ProductDetail> {
-    return this.put(`/products/${id}`, body);
+  updateProduct(id: number, body: Object): Observable<ProductDetail> {
+    return this.patch(`/products/${id}`, body);
   }
 
   deleteProduct(id: number): Observable<unknown> {

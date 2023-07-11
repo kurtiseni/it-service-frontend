@@ -4,6 +4,7 @@ import { ProductService } from "../../../services/product.service";
 import { first } from "rxjs/operators";
 import { ActivatedRoute, Router } from "@angular/router";
 import { formatDate } from "@angular/common";
+import { getDirtyState } from "../../../Utilities";
 
 @Component({
   selector: 'app-add-edit-product',
@@ -60,13 +61,13 @@ export class AddEditProductComponent implements OnInit {
 
     if (this.productForm.invalid) return
 
-    this.loading = true;
-
     this.productId ? this.updateProduct(+this.productId) : this.addProduct();
 
   }
 
   addProduct() {
+    this.loading = true;
+
     this.productService
       .addProduct(this.productForm.value)
       .pipe(first())
@@ -77,7 +78,17 @@ export class AddEditProductComponent implements OnInit {
   }
 
   updateProduct(id: number) {
-    console.log(id)
+    const dirtyFields = getDirtyState(this.productForm)
+    if (!Object.keys(dirtyFields).length) return
+
+    this.loading = true;
+
+    this.productService
+      .updateProduct(id, dirtyFields)
+      .subscribe({
+        next: res => console.log(res),
+        complete: () => this.loading = false
+    })
   }
 
   fillProductForm(id: number) {
@@ -89,6 +100,7 @@ export class AddEditProductComponent implements OnInit {
         res.warrantyExpiryDate = formatDate(res.warrantyExpiryDate, 'yyyy-MM-dd', 'en')
 
         this.productForm.patchValue(res)
+        this.productForm.markAsPristine()
       })
   }
 
