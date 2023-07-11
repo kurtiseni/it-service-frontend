@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
-export class AlertMessages {
+export class AlertMessage {
   type!: string;
   message!: string;
 }
@@ -10,15 +10,15 @@ export class AlertMessages {
   providedIn: 'root',
 })
 export class AlertsService {
-  private errors = new Subject<AlertMessages>();
+  private messageSubject = new Subject<AlertMessage>();
 
   constructor() {}
 
-  addMessages(errors: AlertMessages) {
-    this.errors.next(errors);
+  addMessages(messageObj: AlertMessage) {
+    this.messageSubject.next(messageObj);
   }
 
   getMessages() {
-    return this.errors.asObservable();
+    return this.messageSubject.asObservable();
   }
 }

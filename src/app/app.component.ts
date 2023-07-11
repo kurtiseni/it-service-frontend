@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { UserModel } from './pages/auth/user.model';
-import { AlertMessages, AlertsService } from './services/alerts.service';
+import { AlertMessage, AlertsService } from './services/alerts.service';
 import { UserService } from './services/user.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   showHeader = false;
   user = new UserModel();
 
-  alertObject: AlertMessages[] = [];
+  alertObject: AlertMessage[] = [];
 
   constructor(private userService: UserService, router: Router, private alertService: AlertsService) {
     router.events
@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.alertService.getMessages().subscribe((res: AlertMessages) => {
+    this.alertService.getMessages().subscribe((res: AlertMessage) => {
       this.alertObject.push(res);
 
       this.alertObject.forEach((el, index) => {

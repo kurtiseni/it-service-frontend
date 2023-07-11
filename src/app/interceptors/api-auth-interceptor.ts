@@ -62,8 +62,14 @@ export class ApiAuthInterceptor implements HttpInterceptor {
           .pipe(
             tap((evt: HttpEvent<any>) => {
               if (evt instanceof HttpResponse) {
+                if (req.method === 'DELETE' || req.method === 'PATCH') {
+                  this.alertService.addMessages({
+                    type: 'success',
+                    message: `${req.method} ${evt.statusText}`,
+                  })
+                }
+
                 if (evt.status === 201) {
-                  // console.log(evt);
                   if (evt.url === `${origin}/reports`) return;
                   if (evt.url === `${origin}/auth/login`) {
                     this.alertService.addMessages({
