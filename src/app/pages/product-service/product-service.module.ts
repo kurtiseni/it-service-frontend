@@ -4,6 +4,7 @@ import { ProductServiceComponent } from './product-service.component';
 import { AddEditServiceComponent } from './add-edit/add-edit.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddButtonComponent } from '../../components/add-button.component';
 
 const routes: Routes = [
   {
@@ -22,11 +23,12 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [ProductServiceComponent, AddEditServiceComponent],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    FormsModule,
-    ReactiveFormsModule,
-  ],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(routes),
+        FormsModule,
+        ReactiveFormsModule,
+        AddButtonComponent,
+    ],
 })
 export class ProductServiceModule {}
