@@ -11,7 +11,7 @@
           class="login-form"
           [formGroup]="loginForm"
           (ngSubmit)="onSubmit()"
-        >
+          >
           <div class="mb-3">
             <input
               type="text"
@@ -21,13 +21,16 @@
               formControlName="email"
               autofocus
               [class]="{ 'is-invalid': submitted && form['email'].errors }"
-            />
-            <div
-              *ngIf="submitted && form['email'].errors"
-              class="invalid-feedback"
-            >
-              <div *ngIf="form['email'].errors?.['required']">Username is required</div>
-            </div>
+              />
+            @if (submitted && form['email'].errors) {
+              <div
+                class="invalid-feedback"
+                >
+                @if (form['email'].errors?.['required']) {
+                  <div>Username is required</div>
+                }
+              </div>
+            }
           </div>
           <div class="mb-3">
             <input
@@ -37,15 +40,18 @@
               placeholder="Password"
               formControlName="password"
               [class]="{ 'is-invalid': submitted && form['password'].errors }"
-            />
-            <div
-              *ngIf="submitted && form['password'].errors"
-              class="invalid-feedback"
-            >
-              <div *ngIf="form['password'].errors?.['required']">
-                Password is required
+              />
+            @if (submitted && form['password'].errors) {
+              <div
+                class="invalid-feedback"
+                >
+                @if (form['password'].errors?.['required']) {
+                  <div>
+                    Password is required
+                  </div>
+                }
               </div>
-            </div>
+            }
           </div>
           <div class="text-center small">
             <a href="javascript:void(0)">Forgot Password</a>
@@ -65,16 +71,19 @@
                 translate-middle
               "
               [disabled]="loading"
-            >
-              <span
-                *ngIf="loading"
-                class="spinner-border spinner-border-sm mr-1"
-              ></span>
+              >
+              @if (loading) {
+                <span
+                  class="spinner-border spinner-border-sm mr-1"
+                ></span>
+              }
               Login
             </button>
-            <div *ngIf="error" class="alert alert-danger mt-3 mb-0">
-              {{ error }}
-            </div>
+            @if (error) {
+              <div class="alert alert-danger mt-3 mb-0">
+                {{ error }}
+              </div>
+            }
           </div>
         </form>
       </div>

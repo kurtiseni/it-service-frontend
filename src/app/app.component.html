@@ -1,29 +1,23 @@
-<app-header
-  *ngIf="showHeader"
-  [user]="user"
-  (logoutEvent)="logout()"
-></app-header>
+@if (showHeader) {
+  <app-header [user]="user" (logoutEvent)="logout()" />
+}
 
 <div class="py-5"></div>
-<!--<div-->
-<!--  class="alert mb-4 position-absolute alert-position alert-danger">fdsfdsfds</div>-->
-<!--<div-->
-<!--  class="alert mb-4 position-absolute alert-position alert-danger">fdsfdsfds</div>-->
 
 <div class="position-absolute alert-position">
-<ng-container *ngFor="let alert of alertObject">
-  <div
-    class="alert py-2 mb-4 border-0 rounded-0 shadow-sm"
-    [class]="{
-      'alert-success': alert.type === 'success',
-      'alert-danger': alert.type === 'error'
-    }"
-    role="alert"
-    *ngIf="alert?.type"
-  >
-    {{ alert.message }}
-  </div>
-</ng-container>
+  @for (alert of alertObject; track alert) {
+    @if (alert?.type) {
+      <div
+        class="alert py-2 mb-4 border-0 rounded-0 shadow-sm"
+        [class]="{
+          'alert-success': alert.type === 'success',
+          'alert-danger': alert.type === 'error'
+        }"
+        role="alert">
+        {{ alert.message }}
+      </div>
+    }
+  }
 </div>
 
 <router-outlet></router-outlet>

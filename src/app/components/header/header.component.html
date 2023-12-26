@@ -6,7 +6,7 @@
     bg-white
     border-bottom
   "
->
+  >
   <div class="container">
     <!-- <a class="navbar-brand" routerLink="#">Navbar</a> -->
     <button
@@ -17,7 +17,7 @@
       aria-controls="navbarSupportedContent"
       aria-expanded="false"
       aria-label="Toggle navigation"
-    >
+      >
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -30,68 +30,71 @@
             [routerLinkActive]="'text-primary'"
             [routerLinkActiveOptions]="{ exact: true }"
             >Home</a
-          >
-        </li>
-        <li
-          *ngFor="let menu of headerMenu"
-          class="nav-item"
-          [class]="menu.children ? 'dropdown' : ''"
-        >
-          <ng-container
+            >
+          </li>
+          @for (menu of headerMenu; track menu) {
+            <li
+              class="nav-item"
+              [class]="menu.children ? 'dropdown' : ''"
+              >
+              <ng-container
             *ngTemplateOutlet="
               menu.children ? dropDownMenu : productListOnly;
               context: menu
             "
-          ></ng-container>
-        </li>
-      </ul>
-
-      <ul class="navbar-nav text-capitalcase">
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            href="javascript:void(0)"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            {{ user.username }}
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end border-0 shadow-sm">
-            <li>
-              <a class="dropdown-item text-primary" href="javascript:void(0)" (click)="logout()">Logout</a>
+              ></ng-container>
             </li>
-          </ul>
-        </li>
-      </ul>
+          }
+        </ul>
+
+        <ul class="navbar-nav text-capitalcase">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="javascript:void(0)"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              >
+              {{ user.username }}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end border-0 shadow-sm">
+              <li>
+                <a class="dropdown-item text-primary" href="javascript:void(0)" (click)="logout()">Logout</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
-<ng-template #dropDownMenu let-subMenu="children" let-title="title">
-  <a
-    class="nav-link dropdown-toggle"
-    href="javascript:void(0)"
-    role="button"
-    data-bs-toggle="dropdown"
-    aria-expanded="false"
-  >
-    {{ title }}
-  </a>
-  <ul class="dropdown-menu dropdown-menu-end border-0 shadow-sm">
-    <li *ngFor="let menu of subMenu">
-      <a
-        class="dropdown-item text-secondary"
-        [routerLink]="menu.url"
-        [routerLinkActive]="'text-primary'"
-        >{{ menu.title }}</a
+  <ng-template #dropDownMenu let-subMenu="children" let-title="title">
+    <a
+      class="nav-link dropdown-toggle"
+      href="javascript:void(0)"
+      role="button"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
       >
-    </li>
-  </ul>
-</ng-template>
+      {{ title }}
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end border-0 shadow-sm">
+      @for (menu of subMenu; track menu) {
+        <li>
+          <a
+            class="dropdown-item text-secondary"
+            [routerLink]="menu.url"
+            [routerLinkActive]="'text-primary'"
+            >{{ menu.title }}</a
+            >
+          </li>
+        }
+      </ul>
+    </ng-template>
 
-<ng-template #productListOnly let-title="title" let-url="url">
-  <a class="nav-link" [routerLink]="url" [routerLinkActive]="'text-primary'">
-    {{ title }}
-  </a>
-</ng-template>
+    <ng-template #productListOnly let-title="title" let-url="url">
+      <a class="nav-link" [routerLink]="url" [routerLinkActive]="'text-primary'">
+        {{ title }}
+      </a>
+    </ng-template>

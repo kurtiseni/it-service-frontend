@@ -13,30 +13,32 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let service of serviceList$">
-              <td class="text-secondary">
-                {{ service.expirayDate | date }}
-              </td>
-              <td>{{ service.product.key }}</td>
-              <td>{{ service.description }}</td>
-              <td>
-                <span [class]="service.repairStatus ? 'text-success' : 'text-danger'">
-                  &dollar;{{ service.serviceCost }}
-                </span>
-              </td>
-              <td>
-                <span>
-                  <i
-                    class="text-opacity-75 fa-lg fa-regular"
+            @for (service of serviceList$; track service) {
+              <tr>
+                <td class="text-secondary">
+                  {{ service.expirayDate | date }}
+                </td>
+                <td>{{ service.product.key }}</td>
+                <td>{{ service.description }}</td>
+                <td>
+                  <span [class]="service.repairStatus ? 'text-success' : 'text-danger'">
+                    &dollar;{{ service.serviceCost }}
+                  </span>
+                </td>
+                <td>
+                  <span>
+                    <i
+                      class="text-opacity-75 fa-lg fa-regular"
                     [class]="
                       service.repairStatus
                         ? 'fa-check-circle text-success'
                         : 'fa-times-circle text-danger'
                     ">
-                  </i>
-                </span>
-              </td>
-            </tr>
+                    </i>
+                  </span>
+                </td>
+              </tr>
+            }
           </tbody>
         </table>
       </div>
