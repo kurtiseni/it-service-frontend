@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,27 +16,25 @@ import { ReportsComponent } from './pages/reports/reports.component';
 import { CookieModule } from 'ngx-cookie';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    ProfileComponent,
-    NotFoundComponent,
-    HeaderComponent,
-    FooterComponent,
-    ReportsComponent,
-  ],
-  imports: [
-    CookieModule.withOptions(),
-    BrowserModule,
-    AppRoutingModule,
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-  ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: ApiAuthInterceptor, multi: true },
-  ],
-  bootstrap: [AppComponent],
+    declarations: [
+        AppComponent,
+        LoginComponent,
+        ProfileComponent,
+        NotFoundComponent,
+        HeaderComponent,
+        FooterComponent,
+        ReportsComponent,
+    ],
+    bootstrap: [AppComponent],
+    imports: [
+        CookieModule.withOptions(),
+        BrowserModule,
+        AppRoutingModule,
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule], providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: ApiAuthInterceptor, multi: true },
+        provideHttpClient(withInterceptorsFromDi()),
+    ]
 })
 export class AppModule {}
