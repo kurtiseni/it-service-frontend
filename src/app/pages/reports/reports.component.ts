@@ -4,8 +4,9 @@ import { UserModel } from '../auth/user.model';
 import { Report } from "./reports.model";
 
 @Component({
-  selector: 'app-reports',
-  templateUrl: './reports.component.html',
+    selector: 'app-reports',
+    templateUrl: './reports.component.html',
+    standalone: false
 })
 export class ReportsComponent implements OnInit {
   reportData$!: Report[];

@@ -4,8 +4,9 @@ import { ProductList } from './product.model';
 import { first } from "rxjs/operators";
 
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html',
+    selector: 'app-product',
+    templateUrl: './product.component.html',
+    standalone: false
 })
 export class ProductComponent implements OnInit {
   productList$!: ProductList[];

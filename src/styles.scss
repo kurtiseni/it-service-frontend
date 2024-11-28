@@ -1,10 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
 $font-primary: "Lato", Arial, sans-serif;
-$primary: #6b448d;
-$primary-hover: #5e3c7c;
-$white: #fff;
-$black: #000;
+$primary: rgb(107, 68, 141);
+$primary-hover: rgb(94, 60, 124);
+$white: rgb(255, 255, 255);
+$black: rgb(0, 0, 0);
 
 body {
   font-family: $font-primary;
@@ -12,7 +12,7 @@ body {
   line-height: 1.8;
   font-weight: normal;
   background: #f8f9fd;
-  color: lighten($black, 50%);
+  color: rgb($black, 0.5);
 }
 a {
   transition: 0.3s all ease;
@@ -23,7 +23,7 @@ a {
     color: $primary-hover;
   }
   &:focus {
-    background-color: lighten($primary, 50%);
+    background-color: rgb($primary, 0.5);
   }
 }
 .bg-primary {
@@ -72,7 +72,7 @@ a {
   &:active {
     outline: none !important;
     box-shadow: none;
-    border-color: lighten($primary, 20%);
+    border-color: rgb($primary, 0.2);
   }
 }
 

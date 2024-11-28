@@ -7,9 +7,10 @@ import { formatDate } from "@angular/common";
 import { getDirtyState } from "../../../Utilities";
 
 @Component({
-  selector: 'app-add-edit-product',
-  templateUrl: './add-edit-product.component.html',
-  styleUrls: ['./add-edit-product.component.scss']
+    selector: 'app-add-edit-product',
+    templateUrl: './add-edit-product.component.html',
+    styleUrls: ['./add-edit-product.component.scss'],
+    standalone: false
 })
 export class AddEditProductComponent implements OnInit {
 

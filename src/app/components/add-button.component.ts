@@ -1,4 +1,4 @@
-import {Component, Input} from "@angular/core";
+import {Component, input} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 
 
@@ -41,14 +41,15 @@ import {ActivatedRoute, Router} from "@angular/router";
   ]
 })
 export class AddButtonComponent {
-  @Input() url!: string;
+  readonly url = input<string>();
 
   constructor(private router: Router, private route: ActivatedRoute) {
   }
 
   buttonAction() {
-    this.url
-      ? this.router.navigateByUrl(this.url)
+    const url = this.url();
+    url
+      ? this.router.navigateByUrl(url)
       : this.router.navigate(['add'], { relativeTo: this.route })
   }
 }

@@ -6,9 +6,10 @@ import { AlertMessage, AlertsService } from './services/alerts.service';
 import { UserService } from './services/user.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    standalone: false
 })
 export class AppComponent implements OnInit {
   showHeader = false;

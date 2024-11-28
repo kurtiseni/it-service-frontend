@@ -3,8 +3,9 @@ import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms
 import { ProductServiceService } from 'src/app/services/product-service.service';
 
 @Component({
-  selector: 'app-add',
-  templateUrl: './add-edit.component.html',
+    selector: 'app-add',
+    templateUrl: './add-edit.component.html',
+    standalone: false
 })
 export class AddEditServiceComponent implements OnInit {
   submitted = false;
