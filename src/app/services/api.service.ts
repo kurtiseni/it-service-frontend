@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Config } from '../Config';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +9,7 @@ import { Config } from '../Config';
 export class ApiService {
   public url: string;
   constructor(public http: HttpClient) {
-    this.url = Config.NEST_URL;
+    this.url = environment.apiUrl;
   }
 
   post(endpoint: string, body: any, reqOpts?: any): Observable<any> {

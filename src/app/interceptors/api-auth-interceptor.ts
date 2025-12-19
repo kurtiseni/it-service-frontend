@@ -9,10 +9,10 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { Config } from '../Config';
 import { UserService } from '../services/user.service';
 import { catchError, tap } from 'rxjs/operators';
 import { AlertsService } from '../services/alerts.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class ApiAuthInterceptor implements HttpInterceptor {
@@ -46,7 +46,7 @@ export class ApiAuthInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     const { origin } = new URL(req.url);
 
-    if (origin === Config.NEST_URL) {
+    if (origin === environment.apiUrl) {
       // if (this.cookie.get('currentUser')) {
       const headers: any = {};
 
